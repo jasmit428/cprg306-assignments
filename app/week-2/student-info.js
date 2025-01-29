@@ -1,17 +1,13 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-const StudentInfo = () => {
+export default function StudentInfo() {
   return (
     <div>
-      <h2>Jasmit Kaur</h2>
-      <p>
-        GitHub Repository:{" "}
-        <Link href="https://github.com/jasmit428/week2" target="_blank">
-          Click here to view my repo
-        </Link>
-      </p>
+      <h1>Shopping List</h1>
+      <p>Jasmit Kaur</p>
+      <Link href="https://github.com/jasmit428/week2">
+        https://github.com/jasmit428/week2
+      </Link>
     </div>
   );
-};
-
-export default StudentInfo;
+}
