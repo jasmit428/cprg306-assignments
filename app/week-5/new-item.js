@@ -6,68 +6,64 @@ export default function NewItem() {
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("Produce");
 
-  const increment = () => setQuantity((prev) => (prev < 20 ? prev + 1 : prev));
-  const decrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
+  function increaseQuantity() {
+    if (quantity < 20) {setQuantity(quantity + 1);}
+  }
 
-  const handleSubmit = (event) => {
+  function decreaseQuantity() {
+    if (quantity > 1) {setQuantity(quantity - 1);}
+  }
+
+  function handleSubmit(event) {
     event.preventDefault();
-    const item = { name, quantity, category };
-    console.log("New Item:", item);
     alert(`Item Added:\nName: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
-
     setName("");
     setQuantity(1);
     setCategory("Produce");
-  };
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-md w-full p-6 bg-white shadow-lg rounded-lg"
-      >
-        <h2 className="text-2xl font-bold mb-4 text-black">Add New Item</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md w-80">
+        <h2 className="text-xl font-bold mb-4 text-black">Add New Item</h2>
 
-        {/* Name Input */}
-        <label className="block mb-2 text-black font-medium">
+        <label className="block mb-2 text-black">
           Name:
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="w-full border p-2 rounded mt-1 bg-gray-50"
             required
-            className="w-full border border-gray-300 p-2 rounded mt-1 bg-gray-50"
           />
         </label>
 
-        {/* Quantity Selector */}
-        <div className="flex items-center space-x-4 bg-gray-200 p-3 rounded-lg shadow-md mb-4">
+        <div className="flex items-center justify-between bg-gray-200 p-2 rounded-lg mb-4">
           <button
             type="button"
-            onClick={decrement}
+            onClick={decreaseQuantity}
             disabled={quantity === 1}
-            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 disabled:bg-gray-400"
+            className="px-3 py-1 bg-red-500 text-white rounded disabled:bg-gray-400"
           >
             -
           </button>
-          <span className="text-xl font-semibold text-black">{quantity}</span>
+          <span className="text-lg text-black">{quantity}</span>
           <button
             type="button"
-            onClick={increment}
+            onClick={increaseQuantity}
             disabled={quantity === 20}
-            className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"
+            className="px-3 py-1 bg-green-500 text-white rounded disabled:bg-gray-400"
           >
             +
           </button>
         </div>
 
-        {/* Category Dropdown */}
-        <label className="block mb-2 text-black font-medium">
+        <label className="block mb-2 text-black">
           Category:
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded mt-1 bg-gray-50"
+            className="w-full border p-2 rounded mt-1 bg-gray-50"
           >
             <option value="Produce">Produce</option>
             <option value="Dairy">Dairy</option>
@@ -83,11 +79,7 @@ export default function NewItem() {
           </select>
         </label>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
-        >
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">
           Add Item
         </button>
       </form>
