@@ -3,7 +3,6 @@
 import Item from "./item";
 
 export default function ItemList({ items, sortBy }) {
-  // Create a sorted copy of items
   const sortedItems = [...items].sort((a, b) => {
     if (sortBy === "name") {
       return a.name.localeCompare(b.name);
