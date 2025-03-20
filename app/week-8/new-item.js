@@ -37,7 +37,7 @@ export default function NewItem({ onAddItem }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 bg-gray-900 p-4 rounded-lg shadow-lg">
-      {/* Name Input */}
+      {/* name input */}
       <label className="block text-white">
         Item Name:
         <input
@@ -50,9 +50,9 @@ export default function NewItem({ onAddItem }) {
         />
       </label>
 
-      {/* Quantity & Category */}
+      {/* quantity & category */}
       <div className="flex space-x-4">
-        {/* Quantity Selector */}
+        {/* quantity selector */}
         <div className="flex items-center justify-between bg-gray-800 p-2 rounded-lg w-1/2">
           <button
             type="button"
@@ -73,7 +73,7 @@ export default function NewItem({ onAddItem }) {
           </button>
         </div>
 
-        {/* Category Dropdown */}
+        {/* category dropdown */}
         <label className="block text-white w-1/2">
           Category:
           <select
@@ -96,7 +96,7 @@ export default function NewItem({ onAddItem }) {
         </label>
       </div>
 
-      {/* Submit Button */}
+      {/* submit button */}
       <button
         type="submit"
         className="w-full bg-blue-600 text-white font-bold py-2 rounded-lg hover:bg-blue-700"

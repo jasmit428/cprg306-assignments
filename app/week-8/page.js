@@ -9,7 +9,7 @@ import itemsData from "./items.json";
 export default function Page() {
   const [items, setItems] = useState(itemsData);
   const [sortBy, setSortBy] = useState("");
-  const [selectedIngredient, setSelectedIngredient] = useState(null); 
+  const [selectedIngredient, setSelectedIngredient] = useState(null);
 
   function handleAddItem(newItem) {
     setItems((prevItems) => [...prevItems, newItem]);
@@ -18,15 +18,15 @@ export default function Page() {
   return (
     <div className="bg-black min-h-screen p-6 text-white flex flex-col items-start">
       <div className="flex w-full max-w-6xl gap-6">
-  
+        {/* Shopping List */}
         <div className="w-2/3">
           <h1 className="text-4xl font-bold mt-8 mb-6">Shopping List</h1>
-          
+
           <div className="bg-gray-900 p-6 rounded-lg shadow-lg w-full">
             <NewItem onAddItem={handleAddItem} />
           </div>
 
-          {/* Sorting Section */}
+          {/* sorting */}
           <div className="mt-6 flex items-center space-x-3">
             <span className="text-lg">Sort by:</span>
             <button
@@ -43,21 +43,22 @@ export default function Page() {
             </button>
           </div>
 
-          {/* Shopping List Items */}
+          {/* list items */}
           <div className="mt-6 bg-gray-800 p-4 rounded-lg shadow-lg">
             <ItemList items={items} onItemSelect={setSelectedIngredient} />
           </div>
         </div>
 
-        {/* Meal ideas */}
-        {selectedIngredient && (
-          <div className="w-1/3 bg-gray-800 p-4 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Meal Ideas</h2>
+        {/* meal ideas pop up */}
+        <div className="w-1/3 bg-gray-800 p-4 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold mb-4">Meal Ideas</h2>
+          {selectedIngredient ? (
             <MealIdeas ingredient={selectedIngredient} />
-          </div>
-        )}
+          ) : (
+            <p className="text-gray-400">Select an item to see meal ideas</p>
+          )}
+        </div>
       </div>
     </div>
   );
 }
-
