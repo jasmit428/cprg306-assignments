@@ -1,3 +1,4 @@
+// importing the Item component to be used within the ItemList component
 import Item from "./item";
 
 export default function ItemList({ items, onItemSelect }) {
